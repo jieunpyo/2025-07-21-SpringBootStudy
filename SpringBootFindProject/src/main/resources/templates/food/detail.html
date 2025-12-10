@@ -34,7 +34,22 @@ p{
     const detailApp=Vue.createApp({
     	data(){
     		return {
-    			fno:'[[${fno}]]'
+    			fno:'[[${fno}]]',
+    			detail:{}
+    		}
+    	},
+    	mounted(){
+    		this.dataRecv()
+    	},
+    	methods:{
+    		async dataRecv(){
+    			await axios.get('http://localhost/food/detail_vue/',{
+    				params:{
+    					fno:this.fno
+    				}
+    			}).then(response=>{
+    				console.log(response.data)
+    			})
     		}
     	}
     })
