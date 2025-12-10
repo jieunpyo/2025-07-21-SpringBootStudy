@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
  * 		 | => Annotatation 
  */
 public class FoodServiceImpl implements FoodService{
-  private FoodMapper mapper;
+  private final FoodMapper mapper;
   /*
    *   @RequiredArgsConstructor
 	  		||

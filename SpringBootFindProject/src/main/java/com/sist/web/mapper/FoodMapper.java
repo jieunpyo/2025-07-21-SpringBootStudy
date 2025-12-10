@@ -23,6 +23,6 @@ public interface FoodMapper {
 	// => selectList
 	public List<FoodVO> foodListData(Map map);
 	
-	@Select("SELECT CEIL(COUNT(*)/12.0 FROM menupan_food")
+	@Select("SELECT CEIL(COUNT(*)/12.0) FROM menupan_food")
 	public int foodTotalPage();
 }

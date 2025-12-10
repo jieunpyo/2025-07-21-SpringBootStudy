@@ -9,7 +9,8 @@
   SELECT fno,name,poster,address,num
   FROM (SELECT fno,name,poster,address,rownum as num
   FROM (SELECT fno,name,poster,address
-  FROM menupan_food ORDER BY fno ASC))
+  FROM menupan_food WHERE address LIKE '%'||#{address}||'%'
+  ORDER BY fno ASC))
   WHERE num BETWEEN #{start} AND #{end}
   </select>
 </mapper>

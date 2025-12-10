@@ -1,5 +1,7 @@
 package com.sist.web.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 // 화면 변경(X) => 다른 언어와 연동 (데이터 전송 목적) => JSON
 // CDN => Spring에 포함 
@@ -19,7 +21,59 @@ import org.springframework.web.bind.annotation.RestController;
  * 	 [[${}]]
  * 	 ------------------------------
  */
-@RestController
-public class FoodRestController {
+// vue연동
+import java.util.*;
+import com.sist.web.service.*;
+import com.sist.web.vo.*;
 
+import lombok.RequiredArgsConstructor;
+@RestController
+//생성자를 이용한 자동 @Autowired
+@RequiredArgsConstructor 
+public class FoodRestController {
+  private final FoodService fService;
+  
+  @GetMapping("/food/find_vue/")
+  public Map food_find_vue(@RequestParam("page") int page,
+		  @RequestParam(name="address",required = false) String address)
+  {
+	  if(address==null)
+		  address="마포";
+	  
+	  Map map=new HashMap();
+	  int rowSize=12;
+	  int start=(rowSize*page)-(rowSize-1);
+	  int end=rowSize*page;
+	  map.put("start", start);
+	  map.put("end", end);
+	  map.put("address", address);
+	  // WHERE num BETWEEN #{start} AND #{end}
+	  // #{} => vo:getXxx() , map:get("key")
+	  List<FoodVO> list=fService.foodListData(map);
+	  int totalpage=fService.foodTotalPage();
+	  
+	  // Block별 처리
+	  final int BLOCK=10;
+	  int startPage=((page-1)/BLOCK*BLOCK)+1;
+	  int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
+	  /*
+	   *   ==> curpage
+	   *   1 2 3 4 5 6 7 8 9 10
+	   *   |				  |
+	   *  startPage			 endPage
+	   *   11				 20
+	   */
+	  if(endPage>totalpage)
+		  endPage=totalpage;
+	  
+	  // Vue로 전송 
+	  map=new HashMap();
+	  map.put("list", list);
+	  map.put("curpage", page);
+	  map.put("totalpage", totalpage);
+	  map.put("startPage", startPage);
+	  map.put("endPage", endPage);
+	  map.put("address", address);
+	  return map; // 자동으로 JSON 변경 => jackson 
+  }
 }
