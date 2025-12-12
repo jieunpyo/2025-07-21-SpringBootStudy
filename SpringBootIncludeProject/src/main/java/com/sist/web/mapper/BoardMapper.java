@@ -14,7 +14,7 @@ public interface BoardMapper {
 		  +"OFFSET #{start} ROWS FETCH NEXT 10 ROWS ONLY")
    public List<BoardVO> boardListData(int start);
    
-   @Select("SELECT CEIL(COUNT(*)/10.0 FROM springboard")
+   @Select("SELECT CEIL(COUNT(*)/10.0) FROM springboard")
    public int boardTotalPage();
    
    // 상세보기 => GetMapping
