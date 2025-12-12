@@ -4,6 +4,8 @@ import java.util.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sist.web.service.*;
@@ -56,5 +58,20 @@ public class BoardController {
 	   model.addAttribute("vo", vo);
 	   model.addAttribute("main_html", "board/detail");
 	   return "main/main";
+   }
+   
+   // 글쓰기
+   @GetMapping("/board/insert")
+   public String board_insert(Model model)
+   {
+	   model.addAttribute("main_html", "board/insert");
+	   return "main/main";
+   }
+
+   @PostMapping("/board/insert_ok")
+   public String board_insert_ok(@ModelAttribute("vo") BoardVO vo)
+   {
+	   bService.boardInsert(vo);
+	   return "redirect:/board/list";
    }
 }

@@ -66,11 +66,5 @@ public class FoodController {
 	   model.addAttribute("main_html", "food/find");
 	   return "main/main";
    }
-   // 글쓰기
-   @GetMapping("/board/insert")
-   public String board_insert(Model model)
-   {
-	   model.addAttribute("main_html", "board/insert");
-	   return "main/main";
-   }
+
 }
