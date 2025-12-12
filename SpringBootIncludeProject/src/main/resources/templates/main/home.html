@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,8 @@ p{
     <div class="row text-center" style="margin-top: 20px">
       <ul class="pagination">
         <li th:if="${startPage>1}"><a th:href="@{/(page=${startPage-1})}">&laquo;</a></li>
-        <li th:each="i:${#numbers.sequence(startPage,endPage)}" th:class="${curpage==i?'active':''}"><a th:href="@{/(page=${i})}">[[${i}]]</a></li>
+        <li th:each="i:${#numbers.sequence(startPage,endPage)}" 
+        th:class="${curpage==i?'active':''}"><a th:href="@{/(page=${i})}">[[${i}]]</a></li>
         <li th:if="${endPage<totalpage}"><a th:href="@{/(page=${endPage+1})}">&raquo;</a></li>
       </ul>
     </div>

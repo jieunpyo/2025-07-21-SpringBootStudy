@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class FoodAndRecipeAOP {
-   @Around("execution(* com.sist.web.controller.*.Controller.*(..))")
+   @Around("execution(* com.sist.web.controller.*Controller.*(..))")
    public Object log(ProceedingJoinPoint jp) throws Throwable
    {
 	   System.out.println("요청 처리 메소드:"+jp.getSignature().getName());

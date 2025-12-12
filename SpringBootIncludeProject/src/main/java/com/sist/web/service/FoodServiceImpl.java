@@ -10,16 +10,16 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 /*
- * 	 @Autowired
- * 	 private final FoodMapper mapper;
- * 
- * 	 private FoodMapper mapper
- * 	 @Autowired
- * 	 public FoodServiceImpl (FoodMapper mapper)
- * 	 {
- * 		this.mapper=mapper;
- * 	 }
- * 	  ==> @RequiredArgsConstructor
+ *   @Autowired
+ *   private FoodMapper mapper;
+ *   
+ *   private FoodMapper mapper
+ *   @Autowired
+ *   public FoodServiceImpl (FoodMapper mapper)
+ *   {
+ *      this.mapper=mapper;
+ *   }
+ *    ==> @RequiredArgsConstructor
  */
 public class FoodServiceImpl implements FoodService{
    private final FoodMapper mapper;
@@ -39,8 +39,20 @@ public class FoodServiceImpl implements FoodService{
    @Override
    public FoodVO foodDetailData(int fno) {
 	// TODO Auto-generated method stub
-	mapper.hitIncrement(fno);
-	return mapper.foodDetailData(fno);
+	   mapper.hitIncrement(fno);
+	   return mapper.foodDetailData(fno);
+   }
+
+   @Override
+   public List<FoodVO> foodFindData(Map map) {
+	// TODO Auto-generated method stub
+	return mapper.foodFindData(map);
+   }
+
+   @Override
+   public int foodFindTotalPage(Map map) {
+	// TODO Auto-generated method stub
+	return mapper.foodFindTotalPage(map);
    }
    
 }

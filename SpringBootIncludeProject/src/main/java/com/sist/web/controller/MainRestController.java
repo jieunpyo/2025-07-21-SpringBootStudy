@@ -21,9 +21,9 @@ public class MainRestController {
    @GetMapping("/main_vue/")
    public ResponseEntity<Map> main_vue(@RequestParam(name="page",required = false) int page)
    {
-	  Map map=new HashMap();
- 	  try
- 	  {
+	 Map map=new HashMap();
+ 	 try
+ 	 {
  	  int start=(page-1)*12;
  	  List<FoodVO> list=fService.foodListData(start);
  	  int totalpage=fService.foodTotalPage();
@@ -41,11 +41,12 @@ public class MainRestController {
  	  map.put("startPage", startPage);
  	  map.put("endPage", endPage);
  	  
- 	  }catch(Exception ex)
- 	  {
- 		  return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
- 	  }
+ 	 }catch(Exception ex)
+ 	 {
+ 		 return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+ 	 }
  	  
  	  return new ResponseEntity<>(map,HttpStatus.OK);
+ 	  
    }
 }

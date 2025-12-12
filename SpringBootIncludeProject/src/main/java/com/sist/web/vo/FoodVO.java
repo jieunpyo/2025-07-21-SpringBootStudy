@@ -3,7 +3,7 @@ package com.sist.web.vo;
 import lombok.Data;
 
 /*
- * 	  FNO                                       NOT NULL NUMBER
+ *    FNO                                       NOT NULL NUMBER
  NAME                                      NOT NULL VARCHAR2(200)
  TYPE                                      NOT NULL VARCHAR2(100)
  PHONE                                              VARCHAR2(20)
@@ -25,6 +25,6 @@ import lombok.Data;
 public class FoodVO {
   private int fno,hit;
   private String name,type,phone,address,theme,price,time,
-  		  parking,poster,images,content;
+          parking,poster,images,content;
   private double score;
 }

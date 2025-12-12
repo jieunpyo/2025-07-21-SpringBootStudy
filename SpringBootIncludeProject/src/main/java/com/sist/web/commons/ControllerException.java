@@ -1,16 +1,17 @@
+
 package com.sist.web.commons;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 // @RestController는 처리할 수 없다 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 /*
- * 			  Object
- * 				|
- * 			  Throwable
- * 				|
- * 		 --------------------------
- * 		 |						  |
- * 		Error				   Exception
+ *            Object 
+ *              |
+ *            Throwable
+ *              |
+ *       -------------------------
+ *       |                       |
+ *      Error                 Exception
  */
 @ControllerAdvice
 // 모든 요청기능 처리 => catch사용 
