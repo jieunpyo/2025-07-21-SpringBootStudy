@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,45 +7,87 @@
 <style type="text/css">
 .row {
   margin: 0px auto;
-  width: 800px;
+  width:800px
 }
+/* 제목 스타일 */
+h3.text-center {
+    font-weight: 700;
+    margin-bottom: 25px;
+    font-size: 26px;
+    color: #333;
+    letter-spacing: -0.5px;
+}
+
+/* 테이블 기본 */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #555;
+    vertical-align: middle;
+    border-bottom: 1px solid #e5e5e5 !important;
+}
+
+.table td {
+    background: #ffffff;
+    color: #444;
+    vertical-align: middle;
+    border-bottom: 1px solid #f0f0f0 !important;
+}
+
+/* danger 클래스를 좀 더 밝게 */
+.danger {
+    background: #ffefef !important;
+    color: #d9534f !important;
+}
+
+
 </style>
 </head>
 <body>
   <div class="container">
     <div class="row">
-      <h3 class="text-center">내용보기</h3>
-      <table class="table">
-        <tbody>
-         <tr>
-           <th width=20% class="text-center danger">번호</th>
-           <td width=30% class="text-center" th:text="${vo.no}">
-           <th width=20% class="text-center danger">작성일</th>
-           <td width=30% class="text-center" th:text="${vo.dbday}">
-         </tr>
-         <tr>
-           <th width=20% class="text-center danger">이름</th>
-           <td width=30% class="text-center" th:text="${vo.name}">
-           <th width=20% class="text-center danger">조회수</th>
-           <td width=30% class="text-center" th:text="${vo.hit}">
-         </tr>
-         <tr>
-           <th width=20% class="text-center danger">제목</th>
-           <td colspan="3" th:text="${vo.subject}"></td>
-         </tr>
-         <tr>
-           <td colspan="4" class="text-left" valign="top" height="250">
-            <pre style="white-space: pre-wrap;background-color: white;border:none">[[${vo.content}]]</pre>
-         </tr>
-         <tr>
-           <td colspan="4" class="text-right">
-            <a href="#" class="btn btn-xs btn-info">수정</a>
-            <a href="#" class="btn btn-xs btn-warning">삭제</a>
-            <a href="/board/list" class="btn btn-xs btn-success">목록</a>
-           </td>
-         </tr>
-        </tbody>
-      </table>
+     <h3 class="text-center">내용보기</h3>
+     <table class="table">
+       <tbody>
+        <tr>
+          <th width=20% class="text-center danger">번호</th>
+          <td width=30% class="text-center" th:text="${vo.no}"></td>
+          <th width=20% class="text-center danger">작성일</th>
+          <td width=30% class="text-center" th:text="${vo.dbday}"></td>
+        </tr>
+        <tr>
+          <th width=20% class="text-center danger">이름</th>
+          <td width=30% class="text-center" th:text="${vo.name}"></td>
+          <th width=20% class="text-center danger">조회수</th>
+          <td width=30% class="text-center" th:text="${vo.hit}"></td>
+        </tr>
+        <tr>
+          <th width=20% class="text-center danger">제목</th>
+          <td colspan="3" th:text="${vo.subject}"></td>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-left" valign="top" height="250">
+           <pre style="white-space: pre-wrap;background-color: white;border:none">[[${vo.content}]]</pre>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-right">
+           <a th:href="@{/board/update(no=${vo.no})}" class="btn btn-xs btn-info">수정</a>
+           <a th:href="@{/board/delete(no=${vo.no})}" class="btn btn-xs btn-warning">삭제</a>
+           <a href="/board/list" class="btn btn-xs btn-success">목록</a>
+          </td>
+        </tr>
+       </tbody>
+     </table>
     </div>
   </div>
 </body>

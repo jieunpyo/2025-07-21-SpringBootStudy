@@ -66,5 +66,4 @@ public class FoodController {
 	   model.addAttribute("main_html", "food/find");
 	   return "main/main";
    }
-
 }

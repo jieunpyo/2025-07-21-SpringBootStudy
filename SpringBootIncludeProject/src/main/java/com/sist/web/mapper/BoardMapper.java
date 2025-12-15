@@ -1,5 +1,6 @@
 package com.sist.web.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -19,8 +20,8 @@ public interface BoardMapper {
    @Select("SELECT CEIL(COUNT(*)/10.0) FROM springboard")
    public int boardTotalPage();
    
-   // 상세보기 => GetMapping
-   @Select("SELECT no,name,subject,content,hit,TO_CHAR(regdate,'YYYY-MM-DD') as dbday " 
+   // 상세보기 =>  @GetMapping
+   @Select("SELECT no,name,subject,content,hit,TO_CHAR(regdate,'YYYY-MM-DD') as dbday "
 		  +"FROM springboard "
 		  +"WHERE no=#{no}")
    public BoardVO boardDetailData(int no);
@@ -33,7 +34,15 @@ public interface BoardMapper {
 		  +"#{pwd},SYSDATE,0)")
    public void boardInsert(BoardVO vo);
    // 수정  => @PutMapping
-   // 삭제  => @DeleteMapping
+   @Select("SELECT pwd FROM springboard WHERE no=#{no}")
+   public String boardGetPassword(int no);
+   @Update("UPDATE springboard SET "
+		  +"name=#{name},subject=#{subject},content=#{content} "
+		  +"WHERE no=#{no}")
+   public void boardUpdate(BoardVO vo);
+   // 삭제  => @DeleteMapping 
+   @Delete("DELETE FROM springboard WHERE no=#{no}")
+   public void boardDelete(int no);
    // ----------------------------- RestFul 
-   // 게시판 / 댓글 
+   // 게시판 / 댓글  
 }
