@@ -29,7 +29,7 @@ p{
 <body>
    <div class="container">
      <div class="row">
-      <div class="col-md-3" v-for="vo in list">
+        <div class="col-md-3" v-for="vo in list">
 		    <div class="thumbnail">
 		      <a :href="'http://localhost:9090/food/detail?fno='+vo.fno">
 		        <img :src="vo.poster" :title="vo.address" style="width:250px;height: 150px">
@@ -41,13 +41,13 @@ p{
 		  </div>
      </div>
      <div class="row text-center" style="margin-top: 20px">
-       <ul class="pagination">
-        <li v-if="startPage>1"><a class="nav-link" @click="prev(startPage-1)">&laquo;</a></li>
-        <li v-for="i in range(startPage,endPage)"
-         :class="i===curpage?'active':''"
-        ><a class="nav-link" @click="pageChange(i)">{{i}}</a></li>
-        <li v-if="endPage<totalpage"><a class="nav-link" @click="next(endPage+1)">&raquo;</a></li>
-       </ul>
+        <ul class="pagination">
+         <li v-if="startPage>1"><a class="nav-link" @click="prev(startPage-1)">&laquo;</a></li>
+         <li v-for="i in range(startPage,endPage)"
+          :class="i===curpage?'active':''"
+         ><a class="nav-link" @click="pageChange(i)">{{i}}</a></li>
+         <li v-if="endPage<totalpage"><a class="nav-link" @click="next(endPage+1)">&raquo;</a></li>
+        </ul>
      </div>
    </div>
    <script>
@@ -63,9 +63,9 @@ p{
     		 }
     	 },
     	 // ViewModel => 데이터를 변경하는 위치 (사용자 요청에 따라)
-    	 // created() : Vue 객체 생성 완료 
+    	 // created() : Vue 객체 생성 완료
     	 // mounted() : HTML이 브라우저에 출력이 된 경우 : onload 
-    	 // $(function(){}) => 다른 Front와 연동 
+    	 //  
     	 // updated() : 데이터가 수정이 된 경우 : 버튼 / 값 입력 => v-model
     	 // unmounted() : 화면 변경 => vue객체 소멸 
     	 mounted(){
@@ -111,7 +111,7 @@ p{
     		 }
     		 
     	 },
-    	 // 목록 + 상세보기 / 예약 => component 
+    	 // 목록 + 상세보기 / 예약 => component
     	 components:{
     		 
     	 },
