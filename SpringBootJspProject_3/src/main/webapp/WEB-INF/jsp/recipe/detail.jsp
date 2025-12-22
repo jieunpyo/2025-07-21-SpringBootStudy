@@ -30,14 +30,11 @@ p{
 </head>
 <body>
   <div class="container">
-    <div class="row">
-    <div id="main-wrapper">
-	<div class="container">
 		<div class="row">
 		 <table class="table">
 		   <tr>
 		    <td class="text-center" colspan="3">
-		     <img :src="store.detail.poster" style="width: 800px;height: 250px">
+		     <img :src="store.detail.poster" style="width: 960px;height: 450px">
 		    </td>
 		   </tr>
 		   <tr>
@@ -61,27 +58,27 @@ p{
 		   <tr>
 		    <td colspan="2"><b>[조리순서]</b></td>
 		   </tr>
-		   <%-- <tr v-for="(vo,index) in ">
+		   <%-- <tr v-for="(detail,index) in ">
 		     <td class="text-left" width=80%>[[${data}]]</td>
 		     <td class="text-right" width="20%">
 		      <img th:src="${nList[status.index]}" style="width:150px;height: 100px"
 		       class="img-rounded"
 		      >
-		     </td>
+		     </td>-->
 		     <!-- 
-		     	 status
-		     	 status.index => ArrayList의 index
-		     	 status.count => ArrayList의 총갯수
-		     	 status.last  => ArrayList의 저장된 마지막값
-		     	 status.first => 첫번째 값 
-		     	 status.even  => 짝수 
-		     	 status.odd   => 홀수 
-		     	 
-		     	 => StringTokenizer
-		     	 => <c:forTokens> 
-		     	 => ${#strings.split(문자열,'구분자')}
+		         status 
+		         status.index => ArrayList의 index
+		         status.count => ArrayList의 총갯수
+		         status.last  => ArrayList의 저장된 마지막값
+		         status.first => 첫번째 값
+		         status.even  => 짝수 
+		         status.odd   => 홀수 
+		         
+		         => StringTokenizer 
+		         => <c:forTokens> 
+		         => ${#strings.split(문자열,'구분자')}
 		      -->
-		   </tr> --%>
+		    </tr> --%>
 		 </table>
 		 <table class="table">
 		   <tr>
@@ -96,8 +93,7 @@ p{
 		     <td width=80%>{{store.detail.chef_profile}}</td>
 		   </tr>
 		 </table>
-    </div>
-  </div>
+	</div>
   </div>
   <script src="/recipejs/recipeDetailStore.js"></script>
   <script>
