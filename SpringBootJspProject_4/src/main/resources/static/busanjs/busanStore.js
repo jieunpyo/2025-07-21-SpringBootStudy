@@ -1,26 +1,5 @@
 const {defineStore} = Pinia
-/*
-   1. Pinia 동작 
-      App 생성 => createApp()
-	  Pinia 등록 => defineStore()
-	  store 생성 
-	    | state => 모든 Vue에서 사용하는 공통 변수 : static 
-		   | 변경시마다 = HTML에 적용
-		  props => 불변
-      각 commponent => store에 저장된 데이터를 사용 
-	       | state변경 => html 변경 
-    2. 코딩 
-	const useSeoulStore=defineStore('seoul',{
-		state:()=>{
-			공통으로 사용되는 변수 
-		},
-		actions:{
-			기능별 수행 
-		}
-	})
-	   
-*/
-const useSeoulStore=defineStore('seoul',{
+const useBusanStore=defineStore('busan',{
 	// 공통 적용 변수 => 중복 : commons 
 	state:()=>({
 		list:[],
@@ -34,9 +13,9 @@ const useSeoulStore=defineStore('seoul',{
 	// 기능 설정 => axios => BASE_URL
 	actions:{
 		// 목록 => 페이지 처리 
-		async seoulListData(type){
+		async busanListData(type){
 			this.type=type
-			const res=await axios.get('http://localhost:9090/seoul/list_vue/',{
+			const res=await axios.get('http://localhost:9090/busan/list_vue/',{
 				params:{
 					page:this.curpage,
 					type:this.type
@@ -53,15 +32,15 @@ const useSeoulStore=defineStore('seoul',{
 		// 페이징 
 		prev(page){
 			this.curpage=page
-			this.seoulListData(this.type)
+			this.busanListData(this.type)
 		},
 		next(page){
 			this.curpage=page
-		    this.seoulListData(this.type)
+		    this.busanListData(this.type)
 		},
 		pageChange(page){
 			this.curpage=page
-			this.seoulListData(this.type)
+			this.busanListData(this.type)
 		},
 		range(start,end){
 			let arr=[]

@@ -18,11 +18,14 @@
                         <div class="blog__sidebar__item">
                             <h4>Categories</h4>
                             <ul>
-                                <li><a href="/seoul?type=1">명소</a></li>
-                                <li><a href="/seoul?type=2">자연 & 관광</a></li>
-                                <li><a href="/seoul?type=3">쇼핑</a></li>
-                                <li><a href="#">음식점</a></li>
-                                <li><a href="#">테마여행</a></li>
+                                <li><a href="/busan?type=1">명소</a></li>
+                                <li><a href="/busan?type=2">문화시설</a></li>
+                                <li><a href="/busan?type=3">축제</a></li>
+                                <li><a href="/busan?type=4">숙박</a></li>
+                                <li><a href="/busan?type=5">쇼핑</a></li>
+                                <li><a href="/busan?type=6">음식점</a></li>
+                                <li><a href="/busan?type=7">부산동영상</a></li>
+                                <li><a href="/busan?type=8">테마여행</a></li>
                             </ul>
                         </div>
                         <div class="blog__sidebar__item">

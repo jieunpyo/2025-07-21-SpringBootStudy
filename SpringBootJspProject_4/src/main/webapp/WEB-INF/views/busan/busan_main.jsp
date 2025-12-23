@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>서울 여행</h2>
+                        <h2>부산 여행</h2>
                         <div class="breadcrumb__option">
                             <span>${title}</span>
                         </div>
@@ -24,8 +24,8 @@
     <section class="blog spad">
         <div class="container">
             <div class="row">
-              <jsp:include page="../seoul/seoul_left.jsp"></jsp:include>
-              <jsp:include page="${seoul_jsp }"></jsp:include>
+              <jsp:include page="../busan/busan_left.jsp"></jsp:include>
+              <jsp:include page="${busan_jsp }"></jsp:include>
             </div>
         </div>
     </section>
