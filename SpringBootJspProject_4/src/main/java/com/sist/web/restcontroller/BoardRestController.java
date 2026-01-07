@@ -21,13 +21,13 @@ public class BoardRestController {
 	private final BoardService bService;
 	
 	@GetMapping("/board/list_vue/")
-	public ResponseEntity<Map> board_list(@RequestParam("page") int page)
+	public ResponseEntity<Map> board_list_vue(@RequestParam("page") int page)
 	{
 		Map map=new HashMap();
 		try
 		{
-			List<BoardVO> list=bService.boardListData((page-1)*10);
-			int totalpage=bService.boardTotalpage();
+			List<BoardVO> list=bService.boardListData((page-1)*12);
+			int totalpage=bService.boardTotalPage();
 			map.put("list", list);
 			map.put("curpage", page);
 			map.put("totalpage", totalpage);
