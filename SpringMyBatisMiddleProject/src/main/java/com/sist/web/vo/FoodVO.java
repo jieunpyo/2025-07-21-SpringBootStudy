@@ -3,19 +3,28 @@ package com.sist.web.vo;
 import lombok.Data;
 
 /*
- * 	 1. Find 
- * 	 2. 결제 
- * 	 3. 예약
- * 	 4. 추천
- * 	 5. 로그인 
- * 	 6. =======> 수정 / 삭제
- * 	 7. 실시간 (채팅) 
- * 	 ======================= 일반 JSP 
+ *    FNO                                       NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(200)
+ TYPE                                      NOT NULL VARCHAR2(100)
+ PHONE                                              VARCHAR2(20)
+ ADDRESS                                   NOT NULL VARCHAR2(500)
+ SCORE                                              NUMBER(2,1)
+ THEME                                              CLOB
+ PRICE                                              VARCHAR2(50)
+ TIME                                               VARCHAR2(100)
+ PARKING                                            VARCHAR2(100)
+ POSTER                                    NOT NULL VARCHAR2(260)
+ IMAGES                                             CLOB
+ CONTENT                                            CLOB
+ HIT                                                NUMBER
+ JJIMCOUNT                                          NUMBER
+ LIKECOUNT                                          NUMBER
+ REPLYCOUNT                                         NUMBER
  */
 @Data
 public class FoodVO {
-	private int fno,hit,jjimcount,likecount,replycount;
-	private String name,type,phone,address,theme,price,time,
-	  		  parking,poster,images,content;
-	private double score;
+  private int fno,hit,jjimcount,likecount,replycount;
+  private String name,type,phone,address,theme,price,time,
+          parking,poster,images,content;
+  private double score;
 }

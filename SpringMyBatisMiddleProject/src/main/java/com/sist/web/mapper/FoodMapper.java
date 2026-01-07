@@ -13,7 +13,7 @@ import com.sist.web.vo.*;
 public interface FoodMapper {
   // 반복이 많은 경우 => 재사용 => ERP 
   @Select(value="{CALL foodListData(#{pStart,mode=IN,javaType=java.lang.Integer},"
-		  	   +"#{pResult,mode=OUT,jdbcType=CURSOR,resultMap=foodMap})}")
+		       +"#{pResult,mode=OUT,jdbcType=CURSOR,resultMap=foodMap})}")
   @Options(statementType = StatementType.CALLABLE)
   public List<FoodVO> foodListData(Map map);
   
@@ -21,7 +21,7 @@ public interface FoodMapper {
   public int foodTotalPage();
   
   @Select(value="{CALL foodDetailData(#{pNo,mode=IN,javaType=java.lang.Integer},"
-	  	   +"#{pResult,mode=OUT,jdbcType=CURSOR,resultMap=detailMap})}")
+	       +"#{pResult,mode=OUT,jdbcType=CURSOR,resultMap=detailMap})}")
   @Options(statementType = StatementType.CALLABLE)
   public List<FoodVO> foodDetailData(Map map);
   
@@ -29,4 +29,16 @@ public interface FoodMapper {
 		 +"hit=hit+1 "
 		 +"WHERE fno=#{fno}")
   public void foodHitIncrement(int fno);
+  /*
+   *  <select id="foodFindData" resultType="com.sist.web.vo.FoodVO"
+       parameterType="hashmap"
+      >
+   */
+  public List<FoodVO> foodFindData(Map map);
+  /*
+   *   <select id="foodFindTotalPage" resultType="int"
+        parameterType="hashmap"
+       >
+   */
+  public int foodFindTotalPage(Map map);
 }
