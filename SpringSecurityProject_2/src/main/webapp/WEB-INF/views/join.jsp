@@ -36,7 +36,7 @@
           </td>
          </tr>
          <tr>
-          <td colspan="2" class="">
+          <td colspan="2" class="text-center">
            <button type="submit">회원가입</button>
            <button type="button" onclick="javascript:history.back()">취소</button>
           </td>

@@ -51,7 +51,7 @@
         <sec:authorize access="hasRole('USER')">
         <tr>
           <td colspan="2" class="text-center">
-            <a href="#" class="btn btn-sm btn-primary">마이페이지</a>
+            <a href="/user" class="btn btn-sm btn-primary">마이페이지</a>
           </td>
         </tr>
         </sec:authorize>
@@ -61,7 +61,7 @@
         <sec:authorize access="hasRole('ADMIN')">
         <tr>
           <td colspan="2" class="text-center">
-            <a href="#" class="btn btn-sm btn-primary">관리자페이지</a>
+            <a href="/admin" class="btn btn-sm btn-primary">관리자페이지</a>
           </td>
         </tr>
         </sec:authorize>
@@ -76,7 +76,7 @@
         </sec:authorize>
         <tr>
           <td colspan="2" class="text-center">
-            <a href="#" class="btn btn-sm btn-primary">모든 사용자</a>
+            <a href="/all" class="btn btn-sm btn-primary">모든 사용자</a>
           </td>
         </tr>
        </tbody>
