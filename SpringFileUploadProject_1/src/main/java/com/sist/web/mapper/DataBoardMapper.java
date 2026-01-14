@@ -1,14 +1,12 @@
 package com.sist.web.mapper;
 
-import java.util.*;
-import com.sist.web.vo.*;
-
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 import org.springframework.stereotype.Repository;
-
+import java.util.*;
+import com.sist.web.vo.*;
 @Mapper
 @Repository
 public interface DataBoardMapper {
@@ -20,7 +18,7 @@ public interface DataBoardMapper {
    public List<DataBoardVO> databoardListData(int start);
    
    @Select("SELECT CEIL(COUNT(*)/10.0) FROM springdataboard")
-   public int databoardTotalpage();
+   public int databoardTotalPage();
    
    @SelectKey(keyProperty = "no",resultType = int.class,before = true,
 		   statement = "SELECT NVL(MAX(no)+1,1) as no FROM springdataboard")
@@ -31,6 +29,6 @@ public interface DataBoardMapper {
    public void databoardInsert(DataBoardVO vo);
    
    // 상세보기 = 다운로드 
-   // 수정 =>
+   // 수정 => 
    // 삭제 => 파일 삭제 
 }

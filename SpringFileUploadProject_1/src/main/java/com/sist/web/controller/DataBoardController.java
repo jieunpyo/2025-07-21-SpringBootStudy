@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import com.sist.web.service.*;
 import com.sist.web.vo.*;
@@ -24,8 +27,8 @@ public class DataBoardController {
    
    @GetMapping("list")
    public String databoard_list(
-	 @RequestParam(name="page",required = false) String page,
-	 Model model
+     @RequestParam(name="page",required = false) String page,
+     Model model
    )
    {
 	   if(page==null)
@@ -33,14 +36,14 @@ public class DataBoardController {
 	   int curpage=Integer.parseInt(page);
 	   List<DataBoardVO> list=
 			   dService.databoardListData((curpage-1)*10);
-	   int totalpage=dService.databoardTotalpage();
+	   int totalpage=dService.databoardTotalPage();
 	   
 	   model.addAttribute("list", list);
 	   model.addAttribute("curpage", curpage);
 	   model.addAttribute("totalpage", totalpage);
 	   return "databoard/list";
    }
-   // insert => 업로드 
+   // insert => 업로드  
    @GetMapping("insert")
    public String databoard_insert()
    {
@@ -48,31 +51,70 @@ public class DataBoardController {
    }
    @PostMapping("insert_ok")
    public String databoard_insert_ok(@ModelAttribute DataBoardVO vo,
-	 HttpServletRequest request
+     HttpServletRequest request
    )
    throws Exception
    {
 	   String uploadDir=request.getServletContext().getRealPath("/upload");
+	   File dir=new File(uploadDir);
+	   if(!dir.exists())
+	   {
+		   dir.mkdirs();
+	   }
 	   List<MultipartFile> files=vo.getFiles();
 	   String filename="";
 	   String filesize="";
+	   boolean bCheck=false;
 	   for(MultipartFile file:files)
 	   {
 		   if(file.isEmpty())
 		   {
-			   vo.setFilename("");
-			   vo.setFilesize("");
-			   vo.setFilecount(0);
+			   bCheck=false;
 		   }
 		   else
 		   {
-			   String oname=file.getOriginalFilename();
-			   File f=new File(uploadDir+"/"+oname);
-			   // 중복 확인 
-			   
+			  String oname=file.getOriginalFilename();
+			  File f=new File(uploadDir+"/"+oname);
+			  // 중복 확인 
+			  if(f.exists())
+			  {
+				  String name=oname.substring(0,oname.lastIndexOf("."));
+				  String ext=oname.substring(oname.lastIndexOf("."));
+				  int count=1;
+				  while(f.exists())
+				  {
+					  String newName=name+"("+count+")"+ext;
+					  f=new File(uploadDir+"/"+newName);
+					  count++;
+				  }
+			  }
+			  filename+=f.getName()+",";
+			  filesize+=f.length()+",";
+			  bCheck=true;
+			  ///////////// Upload 
+			  Path path=Paths.get(uploadDir,f.getName());
+			  Files.copy(file.getInputStream(), path);
 		   }
-		   // DB첨부 
+		   
 	   }
+	   if(bCheck==true)
+	   {
+		   filename=filename.substring(0,filename.lastIndexOf(","));
+		   filesize=filesize.substring(0,filesize.lastIndexOf(","));
+		   
+		   vo.setFilename(filename);
+		   vo.setFilesize(filesize);
+		   vo.setFilecount(files.size());
+	   }
+	   else
+	   {
+		   vo.setFilecount(0);
+		   vo.setFilename("");
+		   vo.setFilesize("");
+	   }
+	   
+	   dService.databoardInsert(vo);
+	   
 	   return "redirect:/databoard/list";
    }
 }

@@ -14,7 +14,7 @@
 }
 .row{
   margin: 0px auto;
-  width: 900px;
+  width: 850px;
 }
 </style>
 </head>
@@ -23,11 +23,13 @@
     <div class="row">
      <h3 class="text-center">자료실</h3>
      <table class="table">
+      <tr>
        <td>
         <a href="/databoard/insert" class="btn btn-sm btn-primary">
          등록
         </a>
        </td>
+      </tr>
      </table>
      <table class="table">
       <thead>
@@ -38,21 +40,21 @@
          <th width=20% class="text-center">작성일</th>
          <th width=10% class="text-center">조회수</th>
          <th width=5% class="text-center">비고</th>
-        </tr>
+        </tr> 
       </thead>
       <tbody>
         <c:forEach var="vo" items="${list }">
         <tr>
-         <th width=10% class="text-center">${vo.no }</th>
-         <th width=40% class="text-center"></th>
-         <th width=15% class="text-center">${vo.subject }</th>
-         <th width=20% class="text-center">${vo.dbday }</th>
-         <th width=10% class="text-center">${vo.hit }</th>
-         <th width=5% class="text-center">
+         <td width=10% class="text-center">${vo.no }</th>
+         <td width=40%>${vo.subject }</th>
+         <td width=15% class="text-center">${vo.name }</th>
+         <td width=20% class="text-center">${vo.dbday }</th>
+         <td width=10% class="text-center">${vo.hit }</th>
+         <td width=5% class="text-center">
            <input type="checkbox" ${vo.filecount==0?'':'checked' }
-           readonly>
+           disabled>
          </th>
-        </tr>
+        </tr> 
         </c:forEach>
         <tr>
           <td colspan="6" class="text-center">
@@ -61,8 +63,7 @@
             <a href="#" class="btn btn-sm btn-warning">다음</a>
           </td>
         </tr>
-        </tbody>
-      
+      </tbody>
      </table>
     </div>
    </div>

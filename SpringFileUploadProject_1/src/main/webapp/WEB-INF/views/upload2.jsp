@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,6 +11,7 @@
 <script src="https://unpkg.com/vue@3.3.4/dist/vue.global.js"></script>
 <script src="https://unpkg.com/vue-demi"></script>
 <script src="https://unpkg.com/pinia@2.1.7/dist/pinia.iife.prod.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -40,7 +42,7 @@
 			   console.log(formData)
 			   axios.post('/multi-upload',formData,{
 				   headers:{
-					   'Content-type':'multipart/form-data'
+					   'Content-Type':'multipart/form-data'
 				   }
 			   }).then(()=>alert("등록 완료!!"))
 		   }

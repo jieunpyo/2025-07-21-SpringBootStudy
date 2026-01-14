@@ -1,16 +1,16 @@
+
 package com.sist.web.service;
 
 import org.springframework.stereotype.Service;
 import java.util.*;
-
-import com.sist.web.mapper.DataBoardMapper;
+import com.sist.web.mapper.*;
 import com.sist.web.vo.*;
 
 import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class DataBoardServiceImpl implements DataBoardService{
-	private final DataBoardMapper mapper;
+    private final DataBoardMapper mapper;
 
 	@Override
 	public List<DataBoardVO> databoardListData(int start) {
@@ -19,9 +19,9 @@ public class DataBoardServiceImpl implements DataBoardService{
 	}
 
 	@Override
-	public int databoardTotalpage() {
+	public int databoardTotalPage() {
 		// TODO Auto-generated method stub
-		return mapper.databoardTotalpage();
+		return mapper.databoardTotalPage();
 	}
 
 	@Override
