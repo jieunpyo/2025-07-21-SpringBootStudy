@@ -1,8 +1,0 @@
-ID       NOT NULL VARCHAR2(20)  		아이디
-PWD      NOT NULL VARCHAR2(10)  		비밀번호
-NICKNAME     NOT NULL VARCHAR2(51)  	닉네임
-SEX               VARCHAR2(6)   			성별
-BIRTHDAY NOT NULL VARCHAR2(20)  		생일
-CONTENT           CLOB          			자기소개
-ADMIN             CHAR(1)       			어드민여부
-REGDATE           DATE  				가입일자

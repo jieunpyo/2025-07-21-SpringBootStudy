@@ -1,4 +1,3 @@
-
 package com.sist.web.service;
 
 import org.springframework.stereotype.Service;
@@ -35,5 +34,24 @@ public class DataBoardServiceImpl implements DataBoardService{
 		// TODO Auto-generated method stub
 		mapper.hitIncrement(no);
 		return mapper.databoardDetailData(no);
+	}
+
+	@Override
+	public String databoardDelete(int no, String pwd) {
+		// TODO Auto-generated method stub
+		String res="no";
+		String db_pwd=mapper.databoardGetPassword(no);
+		if(db_pwd.equals(pwd))
+		{
+			res="yes";
+			mapper.databoardDelete(no);
+		}
+		return res;
+	}
+
+	@Override
+	public DataBoardVO databoardFileInfo(int no) {
+		// TODO Auto-generated method stub
+		return mapper.databoardFileInfo(no);
 	}
 }
